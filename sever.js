@@ -1,8 +1,10 @@
 const express = require('express');
+const cors = require('cors'); // Importa o pacote cors
 const app = express();
 const db = require('./db'); // importa o arquivo db.js
 const port = 3000;
 
+app.use(cors()); // Permite CORS para qualquer origem
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -19,7 +21,6 @@ app.get('/api/usuarios', async (req, res) => {
     res.status(500).json({ erro: 'Erro ao buscar usuários' });
   }
 });
-
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
