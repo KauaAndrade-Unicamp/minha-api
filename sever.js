@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 // Nova rota que busca dados no banco
 app.get('/api/usuarios', async (req, res) => {
   try {
-    const result = await db.query('SELECT "URLImagemEvento" FROM "Evento" ORDER BY "DataEvento" DESC LIMIT 2');
+    const result = await db.query('SELECT "URLImagemEvento", "TituloSiteEvento", "DescricaoSiteEvento" FROM "Evento" ORDER BY "DataEvento" DESC LIMIT 2');
     res.json(result.rows);
   } catch (err) {
     console.error(err);
